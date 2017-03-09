@@ -52,8 +52,8 @@
                         </div>
                     </div>
                     <div id="searchwrapper" class="searchwrapperdiv">
-                        <form>
-                            <input id="dentistsearch" type="text" name="searchbar" placeholder="Find Dentists/Clinics">
+                        <form action="#">
+                            <input id="dentistsearch" type="text" name="searchbar" placeholder="Find Dentists/Clinics" onkeypress="handleKeyPress(event)">
                             <input type="button" id="searchbutton" name="search" value="SEARCH" onclick="return searchDoc()">
                         </form>
                     </div>

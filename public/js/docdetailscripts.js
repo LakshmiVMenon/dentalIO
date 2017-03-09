@@ -363,3 +363,10 @@ function extractTime(timeStr){
   }
   return time;
 }
+
+function handleKeyPress(e){
+  if(e.keyCode === 13){
+      e.preventDefault(); 
+      searchDoc();
+  }
+}
