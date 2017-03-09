@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="stylesheet" type="text/css" href="css/responsive.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="js/scripts.js"></script>
+    </head>
+    <body>
+        <article>
+            <header id="header">
+                <div class="headerLogo">
+                    <a href="#"><img class="logo" src="images/logo.png"></a>
+                </div>
+                <div class="menu" id="mainmenu">
+                    <a onclick="headerMenu()"><img src="images/menu.png"></a>
+                </div>
+                <div class="headerList" id="headerDiv">
+                    <ul class="headerNavList" id="headerNavs">
+                        <li><a href="#">HOME</a></li>
+                        <li><a class="active" href="#">LOGIN/REGISTER</a></li>
+                    </ul>
+                </div>
+            </header>
+            <div class="section">
+                <div class="welcomeSection">
+                    <h1>Welcome Back</h1>
+                    <h3>Changing the way people feel about dentistry</h3>
+                </div>
+                
+                <div class="loginsection">
+                    <form id="loginform" action="/docdetail" method="post">
+                        <input type="text" id="uname" name="username" placeholder="Username">
+                        <div><input type="password" id="pwd" name="password" placeholder="Password"></div>
+                        
+                        <div>
+
+                        <input type="submit" id="loginsubmit" name="submitlogin" value="LOGIN"  onclick = "return processLogin()">
+
+                        </div>
+                        <div id="loginerror"></div>
+                    </form>
+                    <div class="forgotpwddiv">
+                        <a href="#" class="forgotpwd">Forgot Password?</a></div>
+                </div>
+                
+                <div>
+                    <div class="registersection">Don’t have an account yet? <a class="register" href="#">REGISTER</a></div>
+                    
+                    <div class="guestsection">
+                        <h2>Hi there!</h2>
+                        <h4>don’t need to signin? get connected as</h4>
+                        
+                        <input type="button" id="guestsubmit" name="gsubmit" value="GUEST">
+                    </div>
+                </div>
+            
+            </div>
+            <footer id="footer">
+                <div class="footertextblock">
+                    <div class="footertext">
+                        <div class="text1">DENTAL.io © 2015 All Rights Reserved</div>
+                        <div class="text2"> <a class="terms" href="#">TERMS OF USE</a> and <a class="pricaypolicy" href="#">PRIVACY POLICY</a> | Designed by <a class="designed" href="#">PIXELSPOTSTUDIO.COM</a></div>
+                    </div>
+                </div>
+            </footer>
+        </article>
+    </body>
+</html>

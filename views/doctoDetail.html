@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="stylesheet" type="text/css" href="css/responsive.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="js/docdetailscripts.js"></script>
+
+    </head>
+    <body onload="loaddetails()" >
+        <article>
+            <header id="header">
+                <div class="headerLogo">
+                    <a href="#"><img class="logo" src="images/logo.png"></a>
+                </div>
+                <div class="menu" id="mainmenu">
+                    <a onclick="headerMenu()"><img src="images/menu.png"></a>
+                </div>
+                <div class="headerList">
+                    <ul class="headerNavList" id="headerNavs">
+                        <li><a href="#">HOME</a></li>
+                        <li><a href="#">ABOUT</a></li>
+                        <li><a class="active" href="#">DOCTORS</a></li>
+                        <li><a href="#">MEDICAL HISTORY</a></li>
+                        <li><a href="#">APPOINTMENTS</a></li>
+                        <li><a href="#">COMMUNICATION</a></li>
+                        <li><a href="#">PROFILE</a></li>
+                    </ul>
+                </div>
+            </header>
+            <div class="docdetailsection">
+                <div id="introtextsection">
+                    <h4 id="introtext">Physicians nearby</h4>
+                    <h5 id="resultcount">13 Results Found</h5>
+                </div>
+                
+                <div id="searchsection">
+                    <div class="iconclass">
+                        <div class="searchicon">
+                            <input type="button" id="searchiconbutton" name="searchbtn" onclick="return expandSearch()">
+                        </div>
+                        <div class="sorticon">
+                            <input type="button" id="sortbutton" name="sortbtn" onclick="return expandSort()">
+                        </div>
+                        <div class="filtericon">
+                            <input type="button" id="filterbutton" name="filterbtn" onclick="return expandFilters()">
+                        </div>
+                    </div>
+                    <div id="searchwrapper" class="searchwrapperdiv">
+                        <form>
+                            <input id="dentistsearch" type="text" name="searchbar" placeholder="Find Dentists/Clinics">
+                            <input type="button" id="searchbutton" name="search" value="SEARCH" onclick="return searchDoc()">
+                        </form>
+                    </div>
+
+                    <div id="sortwrapper" class="sortwrapperDiv">
+                        <h5 id="sortbytext">Sort By:</h5>
+                        <select id="sortby">
+                            <option value="popularity">Popularity</option>
+                            <option value="fee">Fees</option>
+                        </select>
+                    </div>                    
+                </div>
+                
+                <div class="detailssection">
+                    <div class="filterwrapper" id="filterwrapperdiv">
+                        <ul class="filtersection">
+                            <li class="filterli">
+                                <div class="servicefilter">
+                                    <div class="filterheading">Services</div>
+                                    <div class="servicesearch">
+                                        <input id="servicesearchbar" type="text" name="servsearchbar">
+                                        <input type="button" id="servsearchbutton" name="servsearch">
+                                    </div>
+                                    <div class="filterdivide"></div>
+                                    <div class="serviceslistwrapper">
+                                        <ul class="servicelist">
+                                            <li class="serviceli"><input type="checkbox" class="servicechkbox" name="service" value="Service One"><label>Service One</label></li>
+                                            <li class="serviceli"><input type="checkbox" class="servicechkbox" name="service" value="Service One"><label>Service One</label></li>
+                                            <li class="serviceli"><input type="checkbox" class="servicechkbox" name="service" value="Service One"><label>Service One</label></li>
+                                            <li class="serviceli"><input type="checkbox" class="servicechkbox" name="service" value="Service One"><label>Service One</label></li>
+                                            <li class="serviceli"><input type="checkbox" class="servicechkbox" name="service" value="Service One"><label>Service One</label></li>
+                                            <li class="serviceli"><input type="checkbox" class="servicechkbox" name="service" value="Service One"><label>Service One</label></li>
+                                            <li class="serviceli"><input type="checkbox" class="servicechkbox" name="service" value="Service One"><label>Service One</label></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="filterli">
+                                <div class="availablityfilter">
+                                    <div class="filterheading">Availability</div>
+                                    <div class="slider">
+                                        <div class="slidertrack" id="slidertrackdiv">
+                                            <div class="sliderknobdiv" id="knob1"><img src="/images/end.png" class="sliderknb1" id="knobimg1"><span id="leftval"></span><span><div class="sliderrange" id="slideRangeDiv"></div></span></div>
+                                            <div class="sliderknobdiv2" id="knob2"><img src="/images/end.png" class="sliderknb2" id="knobimg2"><span id="rightval"></span></div>
+                                        </div>
+                                    </div>
+                                    <div class="filterdivide"></div>
+                                    <div class="dayslistwrapper">
+                                        <ul class="dayslist">
+                                            <li class="serviceli"><input type="checkbox" class="servicechkbox" name="service" value="Monday"><label>Monday</label></li>
+                                            <li class="serviceli"><input type="checkbox" class="servicechkbox" name="service" value="Tuesday" checked="checked"><label>Tuesday</label></li>
+                                            <li class="serviceli"><input type="checkbox" class="servicechkbox" name="service" value="Wednesday"><label>Wednesday</label></li>
+                                            <li class="serviceli"><input type="checkbox" class="servicechkbox" name="service" value="Thursday"><label>Thursday</label></li>
+                                            <li class="serviceli"><input type="checkbox" class="servicechkbox" name="service" value="Friday"><label>Friday</label></li>
+                                            <li class="serviceli"><input type="checkbox" class="servicechkbox" name="service" value="Saturday"><label>Saturday</label></li>
+                                            <li class="serviceli"><input type="checkbox" class="servicechkbox" name="service" value="Sunday"><label>Sunday</label></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="filterli">
+                                <div class="feefilter">
+                                    <div class="filterheading">Fees</div>
+                                    <div class="filterdivide"></div>
+                                    <div class="feeslistwrapper">
+                                        <ul class="feeslist">
+                                            <li class="serviceli"><input type="checkbox" class="servicechkbox" name="service" value="Free-100"><label>Free - 100</label></li>
+                                            <li class="serviceli"><input type="checkbox" class="servicechkbox" name="service" value="100-250"><label>100 - 250</label></li>
+                                            <li class="serviceli"><input type="checkbox" class="servicechkbox" name="service" value="250-500"><label>250 - 500</label></li>
+                                            <li class="serviceli"><input type="checkbox" class="servicechkbox" name="service" value="500-1000"><label>500 - 1000</label></li>
+                                            <li class="serviceli"><input type="checkbox" class="servicechkbox" name="service" value="1000-1500"><label>1000 - 1500</label></li>
+                                            <li class="serviceli"><input type="checkbox" class="servicechkbox" name="service" value="1500-2000"><label>1500 - 2000</label></li>
+                                            <li class="serviceli"><input type="checkbox" class="servicechkbox" name="service" value="2000-2500"><label>2000 - 2500</label></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+                    
+                    <!-- doctor details -->
+                    <div class="docdetailswrapper">
+                        <ul class="doclist" id="docdetailsUL">
+                        </ul>
+                    </div>   
+                </div>            
+            </div>
+            <footer id="footer">
+                <div class="footertextblock">
+                    <div class="footertext">
+                        <div class="text1">DENTAL.io © 2015 All Rights Reserved</div>
+                        <div class="text2"> <a class="terms" href="">TERMS OF USE</a> and <a class="pricaypolicy" href="">PRIVACY POLICY</a> | Designed by <a class="designed" href="">PIXELSPOTSTUDIO.COM</a></div>
+                    </div>
+                </div>
+            </footer>
+        </article>
+    </body>
+</html>
