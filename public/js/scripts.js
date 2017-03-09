@@ -33,7 +33,7 @@ function processLogin(){
         if(xhr.readyState == 4 && xhr.status == 200) {
             var resp = JSON.parse(xhr.responseText);
             if(resp.isloggedin){
-              document.getElementById("loginform").submit();
+              window.location.href = '/docdetail';
             }
             else{
               document.getElementById('loginerror').innerHTML = resp.errMsg;
