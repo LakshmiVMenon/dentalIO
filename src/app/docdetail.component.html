@@ -2,63 +2,57 @@
 
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="css/style.css">
-        <link rel="stylesheet" type="text/css" href="css/responsive.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-        <script src="js/docdetailscripts.js"></script>
-
     </head>
-    <body onload="loaddetails()" >
+    <body>
         <article>
             <header id="header">
                 <div class="headerLogo">
-                    <a href="#"><img class="logo" src="images/logo.png"></a>
+                    <a href="#0"><img class="logo" src="../assets/images/logo.png"></a>
                 </div>
                 <div class="menu" id="mainmenu">
-                    <a onclick="headerMenu()"><img src="images/menu.png"></a>
+                    <a (click)="headerMenu()"><img src="../assets/images/menu.png"></a>
                 </div>
                 <div class="headerList">
-                    <ul class="headerNavList" id="headerNavs">
-                        <li><a href="#">HOME</a></li>
-                        <li><a href="#">ABOUT</a></li>
-                        <li><a class="active" href="#">DOCTORS</a></li>
-                        <li><a href="#">MEDICAL HISTORY</a></li>
-                        <li><a href="#">APPOINTMENTS</a></li>
-                        <li><a href="#">COMMUNICATION</a></li>
-                        <li><a href="#">PROFILE</a></li>
+                    <ul [className]="headerClass" id="headerNavs">
+                        <li><a href="#0">HOME</a></li>
+                        <li><a href="#0">ABOUT</a></li>
+                        <li><a class="active" href="#0">DOCTORS</a></li>
+                        <li><a href="#0">MEDICAL HISTORY</a></li>
+                        <li><a href="#0">APPOINTMENTS</a></li>
+                        <li><a href="#0">COMMUNICATION</a></li>
+                        <li><a href="#0">PROFILE</a></li>
                     </ul>
                 </div>
             </header>
             <div class="docdetailsection">
                 <div id="introtextsection">
                     <h4 id="introtext">Physicians nearby</h4>
-                    <h5 id="resultcount">13 Results Found</h5>
+                    <h5 id="resultcount">{{resultCountText}}</h5>
                 </div>
                 
                 <div id="searchsection">
                     <div class="iconclass">
                         <div class="searchicon">
-                            <input type="button" id="searchiconbutton" name="searchbtn" onclick="return expandSearch()">
+                            <input type="button" id="searchiconbutton" name="searchbtn" (click)="expandSearch()">
                         </div>
                         <div class="sorticon">
-                            <input type="button" id="sortbutton" name="sortbtn" onclick="return expandSort()">
+                            <input type="button" id="sortbutton" name="sortbtn" (click)="expandSort()">
                         </div>
                         <div class="filtericon">
-                            <input type="button" id="filterbutton" name="filterbtn" onclick="return expandFilters()">
+                            <input type="button" id="filterbutton" name="filterbtn" (click)="expandFilters()">
                         </div>
                     </div>
-                    <div id="searchwrapper" class="searchwrapperdiv">
-                        <form action="#">
-                            <input id="dentistsearch" type="text" name="searchbar" placeholder="Find Dentists/Clinics" onkeypress="handleKeyPress(event)">
-                            <input type="button" id="searchbutton" name="search" value="SEARCH" onclick="return searchDoc()">
+                    <div id="searchwrapper" [className]="searchClass">
+                        <form action="#0" (ngSubmit)="searchDoctor()" #docSearchForm="ngForm">
+                            <div class="form-group">
+                                <input type="text" id="dentistsearch" class="form-control" [(ngModel)]="searchText" name="searchbar" placeholder="Find Dentists/Clinics">
+                            </div>
+                            <input type="submit" id="searchbutton" name="search" value="SEARCH">
                         </form>
                     </div>
 
-                    <div id="sortwrapper" class="sortwrapperDiv">
+                    <div id="sortwrapper" [className]="sortClass">
                         <h5 id="sortbytext">Sort By:</h5>
                         <select id="sortby">
                             <option value="popularity">Popularity</option>
@@ -68,7 +62,7 @@
                 </div>
                 
                 <div class="detailssection">
-                    <div class="filterwrapper" id="filterwrapperdiv">
+                    <div [className]="filterClass" id="filterwrapperdiv">
                         <ul class="filtersection">
                             <li class="filterli">
                                 <div class="servicefilter">
@@ -96,8 +90,8 @@
                                     <div class="filterheading">Availability</div>
                                     <div class="slider">
                                         <div class="slidertrack" id="slidertrackdiv">
-                                            <div class="sliderknobdiv" id="knob1"><img src="/images/end.png" class="sliderknb1" id="knobimg1"><span id="leftval"></span><span><div class="sliderrange" id="slideRangeDiv"></div></span></div>
-                                            <div class="sliderknobdiv2" id="knob2"><img src="/images/end.png" class="sliderknb2" id="knobimg2"><span id="rightval"></span></div>
+                                            <div class="sliderknobdiv" id="knob1"><img src="../assets/images/end.png" class="sliderknb1" id="knobimg1"><span id="leftval"></span><span><div class="sliderrange" id="slideRangeDiv"></div></span></div>
+                                            <div class="sliderknobdiv2" id="knob2"><img src="../assets/images/end.png" class="sliderknb2" id="knobimg2"><span id="rightval"></span></div>
                                         </div>
                                     </div>
                                     <div class="filterdivide"></div>
@@ -138,6 +132,36 @@
                     <!-- doctor details -->
                     <div class="docdetailswrapper">
                         <ul class="doclist" id="docdetailsUL">
+                            <li id="detailsli" *ngFor="let doctor of doctors">
+                                <div class="detailwrapper">
+                                    <div class="sec1">
+                                        <div class="docimg">
+                                            <img src="../assets/images/{{doctor.profileimg}}.png">
+                                        </div>
+                                        <div class="docdetials">
+                                            <h4 id="docname">{{doctor.name}}</h4>
+                                            <p id="a">{{doctor.role}}<br>{{doctor.qualification}}<br>{{doctor.experience}}</p>  
+                                        </div>
+                                        <div class="appointmentbutton"><input type="button" id="book" name="bookappointment" value="MAKE APPOINTMENT"></div>
+                                    </div>
+                                    <div class="sec1divide"></div>
+                                    <div class="sec2wrapper">
+                                        <div class="sec2">
+                                            <h5 id="clinicname">{{doctor.clinics[0].name}}</h5>
+                                            <p id="a">{{doctor.clinics[0].address}}</p>
+                                            <div class="timings">Monday - Friday:   {{doctor.clinics[0].weekdaytiming}}<br>Saturday - Sunday:  {{doctor.clinics[0].weekendtiming}}</div>
+                                            <div class="fee">{{doctor.clinics[0].fee}} INR/hours</div>
+                                        </div>
+                                        <div class="sec2dividehorz"></div>
+                                        <div class="sec3">
+                                            <h5 id="clinicname">{{doctor.clinics[1].name}}</h5>
+                                            <p id="a">{{doctor.clinics[1].address}}</p>
+                                            <div class="timings">Monday - Friday:   {{doctor.clinics[1].weekdaytiming}}<br>Saturday - Sunday:  {{doctor.clinics[1].weekendtiming}}</div>
+                                            <div class="fee">{{doctor.clinics[1].fee}} INR/hours</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
                         </ul>
                     </div>   
                 </div>            
@@ -146,7 +170,7 @@
                 <div class="footertextblock">
                     <div class="footertext">
                         <div class="text1">DENTAL.io © 2015 All Rights Reserved</div>
-                        <div class="text2"> <a class="terms" href="">TERMS OF USE</a> and <a class="pricaypolicy" href="">PRIVACY POLICY</a> | Designed by <a class="designed" href="">PIXELSPOTSTUDIO.COM</a></div>
+                        <div class="text2"> <a class="terms" href="#0">TERMS OF USE</a> and <a class="pricaypolicy" href="#0">PRIVACY POLICY</a> | Designed by <a class="designed" href="#0">PIXELSPOTSTUDIO.COM</a></div>
                     </div>
                 </div>
             </footer>

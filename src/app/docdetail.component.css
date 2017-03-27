@@ -1,0 +1,121 @@
+.docdetailsection{padding: 0px 100px;}
+#introtextsection{height: 60px;border-bottom: solid;border-bottom-width: 1px;}
+#introtext{font-family: 'Roboto-Medium';font-size: 20px;font-weight: 500;color: #626767;float: left;margin-top: 18px;width:250px;}
+#resultcount{font-family: 'Roboto-Regular';font-weight: 300; font-size: 14px;color: #626767;float: right;margin-top: 22px;}
+
+#searchsection{width: 100%;overflow: auto;}
+#searchwrapper,#searchwrapper.expand{float: left;width: 73.5%}
+#dentistsearch{display: inline-block;float:left; width: 75.1%;margin-top: 20px;background-color: #f6f6f6;border-radius: 20px 0px 0px 20px;border: none;font-size: 12px;color: #626767;padding: 14px 21px}
+#searchbutton{display: inline-block; margin-top: 20px;border: 0; width: 16.45%;border-radius: 0px 20px 20px 0px;background-color:#626767;font-size: 12px;color: #ffffff;padding: 14px 0;cursor: pointer;}
+.sortwrapperDiv,.sortwrapperDiv.expand{float: right;width:23%;}
+#sortby{display: inline-block;float: right; width:70%;padding: 12px 0 12px 21px;font-size: 14px;color:#626767;background-color: #f0f1f2;border-radius: 20px;margin-top: 20px;border:none;cursor: pointer;}
+#sortbytext{display: inline-block; font-family: 'Roboto';font-weight: 300; font-size: 14px;color: #626767;margin-top: 33px;}
+.searchicon{display: none;float: left;}
+#searchiconbutton{background: url(../assets/images/search.png);width: 40px;height: 40px;background-repeat: no-repeat;background-position: center;background-color: transparent;border-radius: 0 14px 14px 0;border-style: none;}
+.sorticon{display: none;position: inline-block;}
+#sortbutton{background: url(../assets/images/sort.png);width: 40px;height: 40px;background-repeat: no-repeat;background-position: center;background-color: transparent;border-radius: 0 14px 14px 0;border-style: none;}
+.filtericon{display: none;float: right;}
+#filterbutton{background: url(../assets/images/filter.png);width: 40px;height: 40px;background-repeat: no-repeat;background-position: center;background-color: transparent;border-radius: 0 14px 14px 0;border-style: none;}
+
+.detailssection{overflow-y:auto;overflow-x: hidden; ;margin: 30px 0;}
+.filterwrapper, .filterwrapper.expand{width: 25%;float: left;}
+.filterli{list-style-type: none;}
+.servicefilter{height: 282px;background-color: #f0f1f2;margin:10px 0;}
+.servicesearch{padding-top: 10px;padding-bottom: 5px;}
+.filterdivide{margin: 0 10px;height: 1px;background-color: #d8d8d8;}
+.filterheading{font-size: 14px;font-family: 'Roboto-Medium'; color: #626767;padding: 20px 0 0 20px;}
+#servicesearchbar{width: 74.5%;margin-left: 10px;height: 28px;border-radius: 14px 0 0 14px;border-style: none;float: left;padding-left:10px;}
+#servsearchbutton{background: url(../assets/images/lens.png);width: 11%;height: 28px;background-repeat: no-repeat;background-position: center;background-color: white;border-radius: 0 14px 14px 0;border-style: none;cursor: pointer; }
+.serviceslistwrapper{padding: 5px 20px 20px 20px;height: 57%;overflow-y: scroll;}
+.servicelist{list-style-type: none;}
+.serviceli{padding: 8.5px 0;}
+.servicechkbox{cursor: pointer;}
+label{font-size: 14px;font-family: 'Roboto-Regular'; color: #626767;padding-left: 10px;}
+
+.availablityfilter{background-color: #f0f1f2;margin-top:20px;height: 360px;}
+.slider{padding: 10px 20px;height: 31px;}
+#slider-range{border-radius:20px;height:10px;}
+.ui-slider .ui-slider-range{background:#0098ff;}
+#slider-range .ui-slider-handle{background: url(../assets/images/end.png);width: 24px;height: 22px; background-repeat: no-repeat;background-position: center;background-color: transparent;border: none;cursor: pointer;}
+/*new code*/
+.slidertrack{height: 10px;
+    background-color: white;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: #d2d2d2;}
+.sliderrange{height: 10px;background-color: #00c9b9; margin-left: 6px;}
+.sliderknb1,.sliderknb2{position: absolute;width: 28px;height: 28px; background-repeat: no-repeat;background-position: center;background-color: transparent;border: none;cursor: pointer;margin-top: -9px;}
+#leftval,#rightval{position: absolute;top: 20px;width: 40px;height: 20px;color: #00bdee;font-size: 13px;font-family: 'Roboto-Regular';text-align: center;}
+.dayslist{padding: 5px 20px 20px 20px;list-style-type: none;}
+
+.feefilter{background-color: #f0f1f2;margin-top:20px;height: 310px;}
+.feeslist{padding: 5px 20px 20px 20px;list-style-type: none;}
+
+.docdetailswrapper{width: 75%;float: right;}
+.doclist{width: 100%;}
+#detailsli{list-style-type: none;}
+.detailwrapper{float: right;width: 96%;height: 282px; border: solid;border-width: thin;border-color: #b5baba;margin:10px 0;}
+.sec1{padding: 20px;overflow: auto;}
+.docimg{float: left;}
+.docdetials{margin-left: 20px; float: left;}
+#docname{font-size: 18px;font-weight: 500;}
+#a{font-size: 14px;font-weight: 500;color: #9ba0a0;}
+.appointmentbutton{float: right; margin-top: 24px;}
+#book{background-color: #f9ba3c;border-radius: 17px;border: none;padding: 12px;color: #ffffff;cursor: pointer;}   
+.sec1divide,.sec2dividehorz{margin: 0 10px;height: 1px;background-color: #d8d8d8;}
+.sec2dividehorz{display:none;}
+.sec2wrapper{padding: 15px 20px;width: 94.8%}
+.sec2{width: 47%;float: left;}
+#clinicname{font-size: 15px;font-weight: 500;color:#626767;}
+.timings{font-size: 13px;color: #626767;margin-top: 11px;}
+.fee{font-size: 14px;font-weight: 500;color: #626767;padding-top: 11px;}
+.sec2divide{margin: 10px 0px;width: 1px;background-color: #d8d8d8;}
+.sec3{float: right;width: 47%}
+
+@media only screen and (max-width: 1024px){
+    #a{font-size: 13px;font-weight: 500;color: #9ba0a0;}
+    #clinicname{font-size: 14px;font-weight: 500;color:#626767;}
+    .timings{font-size: 13px;color: #626767;margin-top: 11px;}
+    .fee{font-size: 13px;font-weight: 500;color: #626767;padding-top: 11px;}
+}
+@media only screen and (max-width: 900px){
+    .docdetailsection{padding: 0px 50px;}
+    #dentistsearch{width: 69%;}
+    .iconclass{width: 20%;float: right;padding-top: 25px;}
+    .sorticon,.filtericon{display:inline-block;}
+    #searchbutton{width: 19.35%;}
+    .sortwrapperDiv{display: none;}
+    .sortwrapperDiv.expand{display: block;float: none;width: 93%;text-align: center;clear: both;}
+    #sortbytext{width:15%;}
+    #sortby{float: none;}
+    .filterwrapper{display: none;}
+    .filterwrapper.expand{display: block;width: 60%;padding-left: 20%;float: none;}
+    .docdetailswrapper{width: 100%;float: none;}
+    .doclist{width: 100%;}
+    .detailwrapper{width: 99%}
+}
+
+@media only screen and (max-width: 767px){
+    .docdetailsection{padding: 0px 15px;text-align: center;}
+    #introtext{float: none;width:auto;}
+    #resultcount{float: none;margin-top: 12px;}
+    #searchwrapper {display: none;}
+    #searchwrapper.expand{display: block;width: 74%;padding: 0 11%;}
+    #dentistsearch{width:54%;}
+    #searchbutton{float: left;width: 24%}
+    .iconclass{width: auto;float: none;padding-top:0px}
+    .searchicon,.sorticon,.filtericon{display:inline-block;width: 25%;padding-top: 25px;}
+    .filterwrapper{display: none;}
+    .filterwrapper.expand{display: block;width: 60%;padding-left: 20%;float: none;}
+    .filtersection{text-align:initial;}
+    .docdetailswrapper{width: 100%;float: none;}
+    .detailwrapper{width: 99%;height: auto;}
+    .docimg{float: none;}
+    .docdetials{margin-left: 0;float: none;}
+    .appointmentbutton{float: none;}
+    .sec2wrapper{padding: 15px 0;width: 100%;}
+    .sec2{float: none;width: auto;padding: 25px 0;}
+    .sec2dividehorz{display:block;}
+    .sec3{float: none;width: auto; margin: 25px 0;}
+    .sec2divide{margin: 0 10px;height: 1px;background-color: #d8d8d8;}
+}
