@@ -10,20 +10,11 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 })); 
 
-// app.use('/css',express.static(path.join(__dirname, 'public/css')));
-// app.use('/js',express.static(path.join(__dirname, 'public/js')));
-// app.use('/images',express.static(path.join(__dirname, 'public/images')));
-
 app.use(express.static(path.join(__dirname, 'dist')));
 app.use(function(req, res, next){
   console.log('%s %s', req.method, req.url);
   next();
 });
-
-// app.get('*', (req, res) => {
-//   res.sendFile(path.join(__dirname, 'dist/index.html'));
-// });
-
 
 app.set('port',process.env.PORT || 3030)
 

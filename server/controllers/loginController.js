@@ -9,7 +9,6 @@ module.exports = {
 		res.sendFile(htmpath);
 	},
 	login: function(req,res){
-		console.log("login")
 		let data = { username:req.body.username, password:req.body.password };
 		userdb.processLogin(data)
 		.then(value => {

@@ -1,6 +1,6 @@
 import { browser, element, by } from 'protractor';
 
-export class DentalIOAngularPage {
+export class ClientPage {
   navigateTo() {
     return browser.get('/');
   }

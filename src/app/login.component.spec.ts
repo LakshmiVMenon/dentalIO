@@ -31,7 +31,6 @@ describe('LoginComponent', () =>{
         spy = spyOn(loginservice, 'login')
                 .and.returnValue(Promise.resolve());
                 
-        // Promise.resolve({ subscribe: (loginServiceStub) => { } })
     });
 
     it('Login component should be truthy', async(() => {
