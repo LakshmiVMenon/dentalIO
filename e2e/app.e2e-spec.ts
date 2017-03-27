@@ -1,10 +1,10 @@
-import { ClientPage } from './app.po';
+import { DentalIOAngularPage } from './app.po';
 
-describe('client App', () => {
-  let page: ClientPage;
+describe('dental-io-angular App', function() {
+  let page: DentalIOAngularPage;
 
   beforeEach(() => {
-    page = new ClientPage();
+    page = new DentalIOAngularPage();
   });
 
   it('should display message saying app works', () => {

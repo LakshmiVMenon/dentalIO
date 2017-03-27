@@ -37,6 +37,7 @@ export class DocDetailComponent implements OnInit{
     getDoctors(){
         this.docDetailService.getDoctors()
             .subscribe((result) =>{ 
+                console.log("----result---"+result)
                 this.doctors = result
                 this.refreshResultCount();
             });    

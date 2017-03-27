@@ -11,6 +11,9 @@ import { Doctor } from './doctor';
 export class DocDetailService {
     constructor(private http:Http){}
     
+    private baseURL = "https://dentalioproject.herokuapp.com";
+    private headers = new Headers({'Content-Type': 'application/json'});
+    private searchURL = "http://localhost:3030/search";
     getDoctors() : Observable <Doctor[]>{
         return this.http.get('/docdetailslist')
                 .map(response => {return response.json() as Doctor[]})
