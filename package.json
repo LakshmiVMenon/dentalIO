@@ -10,10 +10,10 @@
   "scripts": {
     "ng": "ng",
     "start": "node index.js",
-    "postinstall": "ng build",
     "test": "ng test",
     "pree2e": "webdriver-manager update --standalone false --gecko false",
-    "e2e": "protractor"
+    "e2e": "protractor",
+    "postinstall": "ng build"
   },
   "repository": {
     "type": "git",
