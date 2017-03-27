@@ -1,0 +1,33 @@
+h1{font-family: 'Roboto-Light';font-size: 30px;font-weight: 300;color: #626767;text-align: center;margin-top: 47px;margin-bottom: 0px}
+h3{font-family: 'Roboto-Thin';font-size: 20px;font-weight: 300;color: #626767;text-align: center;margin-top: 8px;margin-bottom: 0px;/*margin-bottom: 703px;*/}
+.loginsection{text-align: center;padding-bottom: 36px;border-bottom: #b5baba;border-bottom-width: 1px;border-bottom-style: solid;}
+#uname,#pwd,#loginsubmit{margin-top: 45px;text-align: center;width: 340px;height: 40px;border-radius: 20px;border-style: none;color: #626767;background-color: #f6f6f6;font-family: 'Roboto';font-size: 12px;/*    margin-left: 330px;*/}
+#pwd{margin-top: 20px;}
+#loginerror{color: red;height: 20px;font-family: 'Roboto';font-size: 12px;padding-top: 5px;}
+#loginsubmit{margin-top: 20px;color: #ffffff;background-color: #f7c04d;font-size: 13px;cursor: pointer;}
+.forgotpwddiv{padding-top: 15px;}
+.forgotpwd{margin-top: 15px;text-decoration: none;font-family: 'Roboto-Light';font-size: 15px;font-weight: 300;color: #626767;}
+.registersection{padding-top: 15px;padding-bottom: 41px;font-family: 'Roboto-Light';font-size: 15px;font-weight: 300;color: #626767;}
+.guestsection{text-align: center;padding-bottom: 37px;}
+h2{margin-top: 3px;font-family: 'Roboto-Light';font-size: 28px;font-weight: 300;color: #626767;margin-bottom: 0px;}
+h4{font-family: 'Roboto-Light';font-size: 18px;font-weight: 300;color: #626767;margin-bottom: 0px;margin-top: 8px;}
+.register{text-decoration: none;color: #0098ff;font-family: 'Roboto-Medium';}
+.guestsection{background-color: #f6f6f6;padding-top: 30px;}
+#guestsubmit{margin-top: 25px;text-align: center;width: 340px;height: 40px;border-radius: 20px;border-style: none;color: #ffffff;background-color: #484848;font-family: 'Roboto';font-size: 13px;cursor: pointer;/*    margin-left: 330px;*/}
+
+
+@media only screen and (max-width: 900px){
+    h1{margin-top: 44px;}
+    .guestsection{padding-bottom: 37px;}
+   
+}
+@media only screen and (max-width: 767px){
+    h1{/*margin-top: 53px;*/font-size: 24px;}
+    h3{font-size: 15px;}
+    #uname,#pwd,#loginsubmit{margin-top: 52px;width: 290px;}
+    .guestsection{padding-bottom: 47px;}
+    h2{margin-top: 53px;font-size: 22px;}
+    h4{margin-top: 10px;font-size: 15px;}
+    #guestsubmit{width: 290px;}
+    
+}

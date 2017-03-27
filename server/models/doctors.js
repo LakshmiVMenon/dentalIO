@@ -17,7 +17,8 @@ var schema = {
 	role:{type:String,required:true},
 	qualification:{type:String,required:true},
 	experience:{type:String,required:true},
-	clinics:[clinicSchema]
+	clinics:[clinicSchema],
+	profileimg:{type:String}
 }
 var doctorSchema = mongoose.Schema(schema);
 var Doctor = mongoose.model('Doctor',doctorSchema);

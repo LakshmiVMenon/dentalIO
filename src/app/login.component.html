@@ -2,23 +2,20 @@
 
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="css/style.css">
-        <link rel="stylesheet" type="text/css" href="css/responsive.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-        <script src="js/scripts.js"></script>
     </head>
     <body>
         <article>
             <header id="header">
                 <div class="headerLogo">
-                    <a href="#"><img class="logo" src="images/logo.png"></a>
+                    <a href="#"><img class="logo" src="../assets/images/logo.png"></a>
                 </div>
                 <div class="menu" id="mainmenu">
-                    <a onclick="headerMenu()"><img src="images/menu.png"></a>
+                    <a (click)="headerMenu()"><img src="../assets/images/menu.png"></a>
                 </div>
                 <div class="headerList" id="headerDiv">
-                    <ul class="headerNavList" id="headerNavs">
+                    <ul [className]="headerClass" id="headerNavs">
                         <li><a href="#">HOME</a></li>
                         <li><a class="active" href="#">LOGIN/REGISTER</a></li>
                     </ul>
@@ -31,16 +28,20 @@
                 </div>
                 
                 <div class="loginsection">
-                    <form id="loginform" >
-                        <input type="text" id="uname" name="username" placeholder="Username">
-                        <div><input type="password" id="pwd" name="password" placeholder="Password"></div>
+                    <form id="loginform" (ngSubmit)="login()" #loginForm="ngForm">
+                        <div class="form-group">
+                            <input type="text" id="uname" class="form-control" [(ngModel)]="user.username"  name="username" placeholder="Username">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" id="pwd" class="form-control" [(ngModel)]="user.password" name="password" placeholder="Password">
+                        </div>
                         
                         <div>
 
-                        <input type="submit" id="loginsubmit" name="submitlogin" value="LOGIN"  onclick = "return processLogin()">
+                        <input type="submit" id="loginsubmit" name="submitlogin" value="LOGIN">
 
                         </div>
-                        <div id="loginerror"></div>
+                        <div id="loginerror">{{errorMsg}}</div>
                     </form>
                     <div class="forgotpwddiv">
                         <a href="#" class="forgotpwd">Forgot Password?</a></div>
