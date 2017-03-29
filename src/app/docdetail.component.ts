@@ -1,8 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,ViewChild, ElementRef,Renderer} from '@angular/core';
 // import { BrowserDomAdapter } from 'angular/platform-browser';
 
 import { DocDetailService } from './docdetail.service';
 import { Doctor } from './doctor';
+import { SliderTrackDirective } from './sliderTrack.directive';
+import { LeftKnobDirective } from './leftknob.directive';
+import { RightKnobDirective } from './rightknob.directive';
+import { SliderRangeDirective } from './sliderrange.directive';
 
 @Component({
     moduleId:module.id,
@@ -11,10 +15,19 @@ import { Doctor } from './doctor';
 })
 
 export class DocDetailComponent implements OnInit{
-    constructor(private docDetailService:DocDetailService){}
+    constructor(private docDetailService:DocDetailService,private renderer:Renderer){}
+    @ViewChild(SliderTrackDirective) sliderTrack : SliderTrackDirective;
+    @ViewChild(LeftKnobDirective) leftKnob : LeftKnobDirective;
+    @ViewChild(RightKnobDirective) rightKnob : RightKnobDirective;
+    @ViewChild(SliderRangeDirective) rangedirective : SliderRangeDirective;
+    @ViewChild('knobimage') knobimgeEl : ElementRef
+
+    knobWidth : number;
     doctors: Doctor[] = [];
     searchText: string = '';
     resultCountText:string='';
+    leftknobValue = '';
+    rightknobValue = '';
     sortClass :string = 'sortwrapperDiv';
     filterClass : string = 'filterwrapper';
     searchClass : string = 'searchwrapperdiv';
@@ -27,6 +40,7 @@ export class DocDetailComponent implements OnInit{
     }
 
     ngAfterViewInit(){
+        this.knobWidth = this.knobimgeEl.nativeElement.offsetWidth;
         this.initialiseKnobPositions();
     }
 
@@ -87,27 +101,23 @@ export class DocDetailComponent implements OnInit{
     }
 
     moveknob1(e){
-        var knobdiv = document.getElementById('knob1');
-        var knobWidth = document.getElementById('knobimg1').offsetWidth;
-        var trackWidth = document.getElementById('slidertrackdiv').offsetWidth;
-        let minPos = document.getElementById('slidertrackdiv').offsetLeft - knobWidth/2;
-        let maxPos = document.getElementById('knob2').offsetLeft;
-        knobdiv.style.position = 'absolute';
-        knobdiv.style.left = this.calculatePosition(minPos,maxPos, e.clientX ) + 'px';
-        this.populateTimeValue("leftval",this.calculateTime(trackWidth,knobdiv.offsetLeft,minPos))
+        var trackWidth = this.sliderTrack.getTrackWidth();                           
+        let minPos = this.sliderTrack.getLeft() - this.knobWidth/2;
+        let maxPos = this.rightKnob.getLeftPos();
+
+        this.leftKnob.setLeftPos(this.calculatePosition(minPos,maxPos, e.clientX ));
+        this.leftknobValue = this.calculateTime(trackWidth, this.leftKnob.getLeftPos(), minPos);
         this.calculateRangeWidth();
     }
 
     moveknob2(e){
-        var knobdiv = document.getElementById('knob2');
-        var knobWidth = document.getElementById('knobimg1').offsetWidth;
-        var trackWidth = document.getElementById('slidertrackdiv').offsetWidth;
-        var trackLeft = document.getElementById('slidertrackdiv').offsetLeft;
-        var minPos = document.getElementById('knob1').offsetLeft;
-        var maxPos = trackLeft + trackWidth - knobWidth/2;
-        knobdiv.style.position = 'absolute';
-        knobdiv.style.left = this.calculatePosition(minPos,maxPos, e.clientX ) + 'px';
-        this.populateTimeValue("rightval",this.calculateTime(trackWidth,knobdiv.offsetLeft,trackLeft));
+        var trackWidth = this.sliderTrack.getTrackWidth();  
+        var trackLeft = this.sliderTrack.getLeft();
+        var minPos = this.leftKnob.getLeftPos();
+
+        var maxPos = trackLeft + trackWidth - this.knobWidth/2;
+        this.rightKnob.setLeftPos(this.calculatePosition(minPos,maxPos, e.clientX ));
+        this.rightknobValue = this.calculateTime(trackWidth, this.rightKnob.getLeftPos() ,trackLeft);
         this.calculateRangeWidth();
     }
 
@@ -123,8 +133,7 @@ export class DocDetailComponent implements OnInit{
     }
 
     calculateTime(trackWidth,knobPos,trackPos){
-        var knobWidth = document.getElementById('knobimg1').offsetWidth;
-        var blockNum = Math.floor((knobPos-trackPos+(knobWidth/2))/(trackWidth/12));
+        var blockNum = Math.floor((knobPos-trackPos+(this.knobWidth/2))/(trackWidth/12));
         var time = blockNum + 8;
         var formattedTime = this.formattime(time);
         return formattedTime;
@@ -136,30 +145,26 @@ export class DocDetailComponent implements OnInit{
     }
 
     calculateRangeWidth(){
-        var knob1Pos = document.getElementById('knob1').offsetLeft;
-        var knob2Pos = document.getElementById('knob2').offsetLeft;
+        var knob1Pos = this.leftKnob.getLeftPos();
+        var knob2Pos = this.rightKnob.getLeftPos();
         var rangeWidth = knob2Pos - knob1Pos - 2;
-        document.getElementById("slideRangeDiv").style.width = rangeWidth + 'px';
+        
+        this.rangedirective.setWidth(rangeWidth)
         
     }
 
     initialiseKnobPositions(){
-        var trackWidth = document.getElementById('slidertrackdiv').offsetWidth;
-        var trackLeft = document.getElementById('slidertrackdiv').offsetLeft;
-        var knobWidth = document.getElementById('knobimg1').offsetWidth;
-        var knob1div = document.getElementById('knob1');
-        var knob2div = document.getElementById('knob2');
+        var trackWidth = this.sliderTrack.getTrackWidth();
+        var trackLeft = this.sliderTrack.getLeft();
         
-        var minPos = trackLeft - knobWidth/2;
-        var maxPos = trackLeft + trackWidth - knobWidth/2;
+        var minPos = trackLeft - this.knobWidth/2;
+        var maxPos = trackLeft + trackWidth - this.knobWidth/2;
         
-        knob1div.style.position = 'absolute';
-        knob1div.style.left = minPos+ 'px';
-        this.populateTimeValue("leftval",this.calculateTime(trackWidth,minPos,trackLeft))
+        this.leftKnob.setLeftPos(minPos);
+        this.leftknobValue = this.calculateTime(trackWidth,minPos,trackLeft);
         
-        knob2div.style.position = 'absolute';
-        knob2div.style.left = maxPos + 'px';
-        this.populateTimeValue("rightval",this.calculateTime(trackWidth,maxPos,trackLeft))
+        this.rightKnob.setLeftPos(maxPos);
+        this.rightknobValue = this.calculateTime(trackWidth,maxPos,trackLeft)
         
         this.calculateRangeWidth();
     }
@@ -179,28 +184,23 @@ export class DocDetailComponent implements OnInit{
     }
 
     refreshKnobs(){
-        var trackWidth = document.getElementById('slidertrackdiv').offsetWidth;
-        var knob1val = document.getElementById('leftval').innerHTML;
-        var knob1 = this.extractTime(knob1val)//knob1val.replace(/\D/g, '');
-        var knob2val = document.getElementById('rightval').innerHTML;
-        var knob2 = this.extractTime(knob2val)//knob1val.replace(/\D/g, '');
-        
+        var trackWidth = this.sliderTrack.getTrackWidth();
+        var knob1 = this.extractTime(this.leftknobValue)
+        var knob2 = this.extractTime(this.rightknobValue)
+
         var knob1pos = this.calculateknobPos(knob1,trackWidth);
         var knob2pos = this.calculateknobPos(knob2,trackWidth);
-        var knob1div = document.getElementById('knob1');
-        var knob2div = document.getElementById('knob2');
-        knob1div.style.position = 'absolute';
-        knob1div.style.left = knob1pos+ 'px';
+        this.leftKnob.setLeftPos(knob1pos);
         
-        knob2div.style.position = 'absolute';
-        knob2div.style.left = knob2pos + 'px';
+        this.rightKnob.setLeftPos(knob2pos);
+    
         this.calculateRangeWidth();
     }
 
     calculateknobPos(knobValue,trackWidth){
-        var knobWidth = document.getElementById('knobimg1').offsetWidth;
-        var trackleft = document.getElementById('slidertrackdiv').offsetLeft;
-        var pos = ((knobValue-8) * (trackWidth/12)) +trackleft - (knobWidth/2) ;
+        var trackleft = this.sliderTrack.getLeft();
+
+        var pos = ((knobValue-8) * (trackWidth/12)) +trackleft - (this.knobWidth/2) ;
         return pos;
     }
 

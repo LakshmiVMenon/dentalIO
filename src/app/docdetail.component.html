@@ -89,9 +89,9 @@
                                 <div class="availablityfilter">
                                     <div class="filterheading">Availability</div>
                                     <div class="slider">
-                                        <div class="slidertrack" id="slidertrackdiv">
-                                            <div class="sliderknobdiv" id="knob1"><img src="../assets/images/end.png" class="sliderknb1" id="knobimg1"><span id="leftval"></span><span><div class="sliderrange" id="slideRangeDiv"></div></span></div>
-                                            <div class="sliderknobdiv2" id="knob2"><img src="../assets/images/end.png" class="sliderknb2" id="knobimg2"><span id="rightval"></span></div>
+                                        <div sliderTrack class="slidertrack" id="slidertrackdiv">
+                                            <div leftknob class="sliderknobdiv" id="knob1"><img #knobimage src="../assets/images/end.png" class="sliderknb1" id="knobimg1"><span id="leftval">{{leftknobValue}}</span><span><div rangeDirective class="sliderrange" id="slideRangeDiv"></div></span></div>
+                                            <div rightknob class="sliderknobdiv2" id="knob2"><img src="../assets/images/end.png" class="sliderknb2" id="knobimg2"><span id="rightval">{{rightknobValue}}</span></div>
                                         </div>
                                     </div>
                                     <div class="filterdivide"></div>

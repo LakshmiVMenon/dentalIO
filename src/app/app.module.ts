@@ -13,12 +13,22 @@ import { AppRoutingModule } from './app-routing.module';
 import { LoginService } from './login.service';
 import { DocDetailService } from './docdetail.service';
 
+import { SliderTrackDirective } from './sliderTrack.directive';
+import { LeftKnobDirective } from './leftknob.directive';
+import { RightKnobDirective } from './rightknob.directive';
+import { SliderRangeDirective } from './sliderrange.directive';
+
+
 enableProdMode();
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    DocDetailComponent
+    DocDetailComponent ,
+    SliderTrackDirective,
+    LeftKnobDirective,
+    RightKnobDirective,
+    SliderRangeDirective
   ],
   imports: [
     BrowserModule,
